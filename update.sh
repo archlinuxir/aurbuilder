@@ -37,12 +37,6 @@ while IFS= read -r line; do
         proxychains archlinuxir_dep.sh $line
         rm -rf /home/bardia/source && cd /archlinuxir/x86_64
     fi
-
-# Update the database.
-
-      echo "Updating the Database."
-      repo-add -n -R -p /archlinuxir/x86_64/archlinuxir.db.tar.zst /archlinuxir/x86_64/*.pkg.tar.zst > /dev/null 2>&1
-      echo "Database updated completed."
       echo $line >> /home/bardia/logs/update/Updated-$updatedate
   else
       echo "$line doesn't need to get updated."
@@ -51,18 +45,10 @@ done < /home/bardia/pkg
 
 sleep 2s
 
-# Check for a bug that happens with repo-add.
+# Copy built packages to webserver root and update the database.
 
-if sudo pacman -S 7-zip-bin --noconfirm | grep "Maximum file size exceeded"
-then
-    sleep 2s
-    cd /archlinuxir/x86_64
-    rm archlinuxir*
-    repo-add -n -R -p /archlinuxir/x86_64/archlinuxir.db.tar.zst /archlinuxir/x86_64/*.pkg.tar.zst | tee -a /home/bardia/logs/update/dbfail-$updatedate > /dev/null 2>&1
-    sleep 2s
-    sudo pacman -R 7-zip-bin --noconfirm >> /dev/null
-    echo "Fixed a database bug."
-else
-    sudo pacman -R 7-zip-bin --noconfirm >> /dev/null
-    echo "No database fix needed."
-fi
+cp /build/*.pkg.tar.* /archlinuxir/x86_64
+echo "Updating the Database."
+repo-add -R /archlinuxir/x86_64/archlinuxir.db.tar.zst /archlinuxir/x86_64/*.pkg.tar.zst > /dev/null 2>&1
+echo "Database updated completed."
+rm -rf /build/*
