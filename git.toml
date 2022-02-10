@@ -1,0 +1,315 @@
+[__config__]
+oldver = "old_ver.json"
+newver = "dates.json"
+
+[alacritty-git]
+source = "github"
+github = "alacritty/alacritty"
+
+[bicon-git]
+source = "github"
+github = "behdad/bicon"
+
+[foliate-git]
+source = "github"
+github = "johnfactotum/foliate"
+
+[gnome-shell-extension-appindicator-git]
+source = "github"
+github = "ubuntu/gnome-shell-extension-appindicator"
+
+[gnome-shell-extension-dash-to-dock-git]
+source = "github"
+github = "micheleg/dash-to-dock"
+
+[gnome-shell-extension-dash-to-panel-git]
+source = "github"
+github = "home-sweet-gnome/dash-to-panel"
+
+[gnome-shell-extension-gsconnect-git]
+source = "github"
+github = "GSConnect/gnome-shell-extension-gsconnect"
+
+[gnome-shell-extension-persian-calendar-git]
+source = "github"
+github = "omid/Persian-Calendar-for-Gnome-Shell"
+
+[gnome-shell-extension-proxy-switcher-git]
+source = "github"
+github = "tomflannaghan/proxy-switcher"
+
+[i3status-rust-git]
+source = "github"
+github = "greshake/i3status-rust"
+
+[jcal-git]
+source = "github"
+github = "ashkang/jcal"
+
+[mkinitcpio-colors-git]
+source = "github"
+github = "EvanPurkhiser/mkinitcpio-colors"
+
+[neovim-cmp-buffer-git]
+source = "github"
+github = "hrsh7th/cmp-buffer"
+
+[neovim-cmp-calc-git]
+source = "github"
+github = "hrsh7th/cmp-calc"
+
+[neovim-cmp-emoji-git]
+source = "github"
+github = "hrsh7th/cmp-emoji"
+
+[neovim-cmp-git]
+source = "github"
+github = "hrsh7th/nvim-cmp"
+
+[neovim-cmp-npm-git]
+source = "github"
+github = "David-Kunz/cmp-npm"
+
+[neovim-cmp-nvim-lsp-git]
+source = "github"
+github = "hrsh7th/cmp-nvim-lsp"
+
+[neovim-cmp-nvim-lua-git]
+source = "github"
+github = "hrsh7th/cmp-nvim-lua"
+
+[neovim-cmp-omni-git]
+source = "github"
+github = "hrsh7th/cmp-omni"
+
+[neovim-cmp-path-git]
+source = "github"
+github = "hrsh7th/cmp-path"
+
+[neovim-cmp-rg-git]
+source = "github"
+github = "lukas-reineke/cmp-rg"
+
+[neovim-cmp-treesitter-git]
+source = "github"
+github = "ray-x/cmp-treesitter"
+
+[neovim-cmp_luasnip-git]
+source = "github"
+github = "saadparwaiz1/cmp_luasnip"
+
+[neovim-coc-clangd-git]
+source = "github"
+github = "clangd/coc-clangd"
+
+[neovim-coc-css-git]
+source = "github"
+github = "neoclide/coc-css"
+
+[neovim-coc-deno-git]
+source = "github"
+github = "fannheyward/coc-deno"
+
+[neovim-coc-flutter-git]
+source = "github"
+github = "iamcco/coc-flutter"
+
+[neovim-coc-git]
+source = "github"
+github = "neoclide/coc-git"
+
+[neovim-coc-go-git]
+source = "github"
+github = "josa42/coc-go"
+
+[neovim-coc-html-git]
+source = "github"
+github = "neoclide/coc-html"
+
+[neovim-coc-java-git]
+source = "github"
+github = "neoclide/coc-java"
+
+[neovim-coc-json-git]
+source = "github"
+github = "neoclide/coc-json"
+
+[neovim-coc-pairs-git]
+source = "github"
+github = "neoclide/coc-pairs"
+
+[neovim-coc-pyright-git]
+source = "github"
+github = "fannheyward/coc-pyright"
+
+[neovim-coc-rust-analyzer-git]
+source = "github"
+github = "fannheyward/coc-rust-analyzer"
+
+[neovim-coc-sh-git]
+source = "github"
+github = "josa42/coc-sh"
+
+[neovim-coc-tsserver-git]
+source = "github"
+github = "neoclide/coc-tsserver"
+
+[neovim-coc-vimlsp-git]
+source = "github"
+github = "iamcco/coc-vimlsp"
+
+[neovim-coc-yaml-git]
+source = "github"
+github = "neoclide/coc-yaml"
+
+[neovim-edge-git]
+source = "github"
+github = "sainnhe/edge"
+
+[neovim-everforest-git]
+source = "github"
+github = "sainnhe/everforest"
+
+[neovim-gruvbox-material-git]
+source = "github"
+github = "sainnhe/gruvbox-material"
+
+[neovim-lspconfig-git]
+source = "github"
+github = "neovim/nvim-lspconfig"
+
+[neovim-luasnip-git]
+source = "github"
+github = "L3MON4D3/LuaSnip"
+
+[neovim-nordic-git]
+source = "github"
+github = "andersevenrud/nordic.nvim"
+
+[neovim-plenary-git]
+source = "github"
+github = "nvim-lua/plenary.nvim"
+
+[neovim-polyglot-git]
+source = "github"
+github = "sheerun/vim-polyglot"
+
+[neovim-sonokai-git]
+source = "github"
+github = "sainnhe/sonokai"
+
+[networkmanager-wireguard-git]
+source = "github"
+github = "max-moser/network-manager-wireguard"
+
+[numix-circle-icon-theme-git]
+source = "github"
+github = "numixproject/numix-icon-theme-circle"
+
+[numix-icon-theme-git]
+source = "github"
+github = "numixproject/numix-icon-theme"
+
+[papirus-icon-theme-git]
+source = "github"
+github = "PapirusDevelopmentTeam/papirus-icon-theme"
+
+[persepolis-git]
+source = "github"
+github = "persepolisdm/persepolis"
+
+[plasma5-applets-virtual-desktop-bar-git]
+source = "github"
+github = "wsdfhjxc/virtual-desktop-bar"
+
+[simplescreenrecorder-wlroots-git]
+source = "github"
+github = "foxcpp/ssr-wlroots"
+
+[vim-airline-gruvbox-git]
+source = "github"
+github = "sainnhe/gruvbox-material"
+
+[vim-coc-clangd-git]
+source = "github"
+github = "clangd/coc-clangd"
+
+[vim-coc-css-git]
+source = "github"
+github = "neoclide/coc-css"
+
+[vim-coc-deno-git]
+source = "github"
+github = "fannheyward/coc-deno"
+
+[vim-coc-flutter-git]
+source = "github"
+github = "iamcco/coc-flutter"
+
+[vim-coc-git]
+source = "github"
+github = "neoclide/coc-git"
+
+[vim-coc-go-git]
+source = "github"
+github = "josa42/coc-go"
+
+[vim-coc-html-git]
+source = "github"
+github = "neoclide/coc-html"
+
+[vim-coc-java-git]
+source = "github"
+github = "neoclide/coc-java"
+
+[vim-coc-json-git]
+source = "github"
+github = "neoclide/coc-json"
+
+[vim-coc-pairs-git]
+source = "github"
+github = "neoclide/coc-pairs"
+
+[vim-coc-pyright-git]
+source = "github"
+github = "fannheyward/coc-pyright"
+
+[vim-coc-rust-analyzer-git]
+source = "github"
+github = "fannheyward/coc-rust-analyzer"
+
+[vim-coc-sh-git]
+source = "github"
+github = "josa42/coc-sh"
+
+[vim-coc-tsserver-git]
+source = "github"
+github = "neoclide/coc-tsserver"
+
+[vim-coc-vimlsp-git]
+source = "github"
+github = "iamcco/coc-vimlsp"
+
+[vim-coc-yaml-git]
+source = "github"
+github = "neoclide/coc-yaml"
+
+[vim-gruvbox-git]
+source = "github"
+github = "morhetz/gruvbox"
+
+[vim-polyglot-git]
+source = "github"
+github = "sheerun/vim-polyglot"
+
+[vim-rainbow-parentheses-improved-git]
+source = "github"
+github = "luochen1990/rainbow"
+
+[vim-rust-git]
+source = "github"
+github = "rust-lang/rust.vim"
+
+[windows2usb-git]
+source = "github"
+github = "ValdikSS/windows2usb"
