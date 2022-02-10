@@ -20,6 +20,8 @@ android-support-repository
 anydesk-bin
 archlinux-artwork
 atomicwallet
+audacious-gtk3
+audacious-plugins-gtk3
 aurvote
 behdad-fonts
 borna-fonts
@@ -46,6 +48,7 @@ gnome-terminal-transparency
 google-chrome
 google-chrome-dev
 google-earth-pro
+gradle-bash-completion
 hplip-plugin
 icu4j
 ir-standard-fonts
@@ -76,6 +79,7 @@ mssql-tools
 nahid-fonts
 neovim-drop-in
 nuclear-player-bin
+nwjs-bin
 obfs4proxy-bin
 ocs-url
 opera-developer
