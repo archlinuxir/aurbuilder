@@ -2,8 +2,8 @@
 # I Use proxychains because without it downloading will be slow.
 
 cd /home/bardia/
-start=$(date +%s)
-updatedate=$(date +'%Y-%m-%d-%H-%M-%S')
+START=$(date +%s)
+UPDATEDATE=$(date +'%Y-%m-%d-%H-%M-%S')
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
 
@@ -15,29 +15,30 @@ while IFS= read -r line; do
 # Pacaur and cower are deprecated but I decided to use it as it
 # gave me just what i needed with a single command.
 
-  lastupdate=$(pacaur info $line | grep "Last Modified" | cut -c19-)
-  unixlast=$(date -d "$lastupdate" +"%s")
+  LASTUPDATE=$(pacaur info $line | grep "Last Modified" | cut -c19-)
+  UNIXLAST=$(date -d "$LASTUPDATE" +"%s")
 
 # Add 14 hours to the last update time so if it does have any updates
 # Our 6 hour cronjob will grab it (BUG: gets updated 2 times ).
 
-  unixlast6=$(($unixlast + 50400))
+  UNIXLAST6=$(($UNIXLAST + 50400))
 
 # 50400 for 14 hours (60x60x14 seconds)
 
-  if [[ $unixlast6 -ge $start ]];
+  if [[ $UNIXLAST6 -ge $START ]];
   then
 
     if [ "$line" == "tor-browser" ]
     then
         proxychains archlinuxir_dep.sh tor-browser
+        cd /home/bardia/
         sed -i 's#https://dist.torproject.org/torbrowser/#https://tor.calyxinstitute.org/dist/torbrowser/#g' source/PKGBUILD
         proxychains archlinuxir_dep.sh tor-browser
     else
         proxychains archlinuxir_dep.sh $line
         rm -rf /home/bardia/source && cd /archlinuxir/x86_64
     fi
-      echo $line >> /home/bardia/logs/update/Updated-$updatedate
+      echo $line >> /home/bardia/logs/update/Updated-$UPDATEDATE
   else
       echo "$line doesn't need to get updated."
   fi
@@ -49,6 +50,8 @@ sleep 2s
 
 cp /build/*.pkg.tar.* /archlinuxir/x86_64
 echo "Updating the Database."
+rm /archlinuxir/x86_64/archlinuxir*
 repo-add -R /archlinuxir/x86_64/archlinuxir.db.tar.zst /archlinuxir/x86_64/*.pkg.tar.zst > /dev/null 2>&1
 echo "Database updated completed."
 rm -rf /build/*
+find /home/bardia/logs/build/ -mindepth 1 -mtime +2 -delete

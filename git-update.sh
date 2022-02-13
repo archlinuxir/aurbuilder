@@ -3,8 +3,8 @@
 # Sleeps exist to prevent a set of bugs from happening.
 # I Use proxychains because without it downloading will be slow.
 
-updatedate=$(date +'%Y-%m-%d-%H-%M-%S')
-date=$(date +"%Y%m%d")
+UPDATEDATE=$(date +'%Y-%m-%d-%H-%M-%S')
+DATE=$(date +"%Y%m%d")
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
 sleep 1s
@@ -14,24 +14,24 @@ sleep 1s
 nvchecker -c /home/bardia/git.toml -k /home/bardia/keyfile.toml
 cut -f4 -d '"' /home/bardia/dates.json | rev | cut -c8- | rev > dates
 sed -i '/^$/d' dates
-end=$(cat /home/bardia/pkg-git | wc -l)
-start=1
+END=$(cat /home/bardia/pkg-git | wc -l)
+START=1
 
-while [ $start -le $end ]
+while [ $START -le $END ]
 do
-  gitdate=$(head -$start /home/bardia/dates | tail +$start)
-  gitname=$(head -$start /home/bardia/pkg-git | tail +$start)
-  gitdate1=$(($gitdate + 1))
-    if [[ $gitdate1 -ge $date ]];
+  GITDATE=$(head -$START /home/bardia/dates | tail +$START)
+  GITNAME=$(head -$START /home/bardia/pkg-git | tail +$START)
+  GITDATE1=$(($GITUPDATE + 1))
+    if [[ $GITDATE1 -ge $DATE ]];
     then
-        proxychains archlinuxir_dep.sh $gitname
+        proxychains archlinuxir_dep.sh $GITNAME
         rm -rf /home/bardia/source
         cd /home/bardia
-        echo $gitname >> /home/bardia/logs/update/Updated-git-$updatedate
+        echo $GITNAME >> /home/bardia/logs/update/Updated-git-$UPDATEDATE
     else
         echo "$gitname doesn't need to get updated."
     fi
-  start=$(($start + 1))
+  START=$(($START + 1))
 done
 
 sleep 2s
@@ -40,6 +40,8 @@ sleep 2s
 
 cp /build/*.pkg.tar.* /archlinuxir/x86_64
 echo "Updating the Database."
+rm /archlinuxir/x86_64/archlinuxir*
 repo-add -R /archlinuxir/x86_64/archlinuxir.db.tar.zst /archlinuxir/x86_64/*.pkg.tar.zst > /dev/null 2>&1
 echo "Database updated completed."
 rm -rf /build/*
+find /home/bardia/logs/build/ -mindepth 1 -mtime +2 -delete
