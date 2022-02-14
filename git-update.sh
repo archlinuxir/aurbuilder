@@ -21,8 +21,7 @@ while [ $START -le $END ]
 do
   GITDATE=$(head -$START /home/bardia/dates | tail +$START)
   GITNAME=$(head -$START /home/bardia/pkg-git | tail +$START)
-  GITDATE1=$(($GITUPDATE + 1))
-    if [[ $GITDATE1 -ge $DATE ]];
+    if [[ $GITDATE -eq $DATE ]];
     then
         proxychains archlinuxir_dep.sh $GITNAME
         rm -rf /home/bardia/source
