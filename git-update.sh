@@ -28,7 +28,7 @@ do
         cd /home/bardia
         echo $GITNAME >> /home/bardia/logs/update/Updated-git-$UPDATEDATE
     else
-        echo "$gitname doesn't need to get updated."
+        echo "$GITNAME doesn't need to get updated."
     fi
   START=$(($START + 1))
 done
