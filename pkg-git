@@ -3,6 +3,7 @@ bicon-git
 foliate-git
 gnome-shell-extension-appindicator-git
 gnome-shell-extension-blur-my-shell-git
+gnome-shell-extension-burn-my-windows-git
 gnome-shell-extension-dash-to-dock-git
 gnome-shell-extension-dash-to-panel-git
 gnome-shell-extension-emoji-selector-git
@@ -61,7 +62,9 @@ numix-icon-theme-git
 papirus-icon-theme-git
 persepolis-git
 plasma5-applets-virtual-desktop-bar-git
+polybar-git
 setcolors-git
+siji-git
 simplescreenrecorder-wlroots-git
 spotify-adblock-git
 vim-airline-gruvbox-git
@@ -86,3 +89,4 @@ vim-polyglot-git
 vim-rainbow-parentheses-improved-git
 vim-rust-git
 windows2usb-git
+yarn-completion-git
