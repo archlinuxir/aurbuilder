@@ -19,7 +19,7 @@ while IFS= read -r line; do
   UNIXLAST=$(date -d "$LASTUPDATE" +"%s")
 
 # Add 14 hours to the last update time so if it does have any updates
-# Our 6 hour cronjob will grab it (BUG: gets updated 2 times ).
+# Our 6 hour cronjob will grab it (BUG: gets updated twice ).
 
   UNIXLAST6=$(($UNIXLAST + 50400))
 
