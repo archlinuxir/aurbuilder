@@ -22,6 +22,10 @@ github = "ubuntu/gnome-shell-extension-appindicator"
 source = "github"
 github = "aunetx/blur-my-shell"
 
+[gnome-shell-extension-burn-my-windows-git]
+source = "github"
+github = "Schneegans/Burn-My-Windows"
+
 [gnome-shell-extension-dash-to-dock-git]
 source = "github"
 github = "micheleg/dash-to-dock"
@@ -250,6 +254,10 @@ github = "persepolisdm/persepolis"
 source = "github"
 github = "wsdfhjxc/virtual-desktop-bar"
 
+[polybar]
+source = "github"
+github = "polybar/polybar"
+
 [setcolors-git]
 source = "github"
 github = "EvanPurkhiser/linux-vt-setcolors"
@@ -257,6 +265,10 @@ github = "EvanPurkhiser/linux-vt-setcolors"
 [simplescreenrecorder-wlroots-git]
 source = "github"
 github = "foxcpp/ssr-wlroots"
+
+[siji-git]
+source = "github"
+github = "stark/siji"
 
 [spotify-adblock-git]
 source = "github"
@@ -349,3 +361,7 @@ github = "rust-lang/rust.vim"
 [windows2usb-git]
 source = "github"
 github = "ValdikSS/windows2usb"
+
+[yarn-completion-git]
+source = "github"
+github = "dsifford/yarn-completion"
