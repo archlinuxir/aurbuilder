@@ -10,6 +10,7 @@ build.sh is a script that takes a file and passes all the names to archlinux_dep
 update.sh is the script that is ran every 6 hours by cron. Long story short it checks the update date of a package then updates them if they match a pattern.
 
 git-update.sh updates github versions of a package using nvchecker (this scripts exists because when the github version of an aur package gets updated my method cannot check whether it is updated or not so i use this to check for updates).
+git-update.sh is ran right after update.sh
 
 pkg contains a list of packages that should be updated using update.sh.
 pkg-git contains a list of git packages that should be updated using git-update.sh.
