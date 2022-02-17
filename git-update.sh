@@ -23,6 +23,7 @@ do
   GITNAME=$(head -$START /home/bardia/pkg-git | tail +$START)
     if [[ $GITDATE -eq $DATE ]];
     then
+        rm -rf /home/bardia/source
         proxychains archlinuxir_dep.sh $GITNAME
         rm -rf /home/bardia/source
         cd /home/bardia

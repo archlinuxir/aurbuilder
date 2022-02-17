@@ -4,6 +4,7 @@
 # I Use proxychains because without it downloading will be slow.
 
 cd /home/bardia
+rm -rf /home/bardia/source
 BUILDDATE=$(date +'%Y-%m-%d-%H-%M-%S')
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
@@ -29,8 +30,8 @@ rm -rf /build/*
 
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
-pacman -Sql archlinuxir > /home/bardia/logs/build/list/available-$BUILDDATE
-comm -13 /home/bardia/logs/build/list/available-$BUILDDATE pkg > /home/bardia/logs/build/list/pkg2-$BUILDDATE
+pacman -Sql archlinuxir > /home/bardia/logs/build/available-$BUILDDATE
+diff --suppress-common-lines -y pkg-all /home/bardia/logs/build/available-$BUILDDATE  | awk '{ print $1 }' | sort | grep -v '>' >> > /home/bardia/logs/build/missing-$BUILDDATE
 sleep 2s
 
 # The loop will be run a second time to build left out packages.
@@ -54,6 +55,7 @@ proxychains archlinuxir_dep.sh yay-bin | tee -a /home/bardia/logs/build/build-$B
 # values and runs the build script again.
 
 proxychains archlinuxir_dep.sh tor-browser | tee -a /home/bardia/logs/build/build-$BUILDDATE
+cd /home/bardia/
 sed -i 's#https://dist.torproject.org/torbrowser/#https://tor.calyxinstitute.org/dist/torbrowser/#g' source/PKGBUILD
 proxychains archlinuxir_dep.sh tor-browser | tee -a /home/bardia/logs/build/build-$BUILDDATE
 

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-rm -rf ./source
-
 if test -z "$1";
 then
   echo "Specify a software to build"

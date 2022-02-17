@@ -4,6 +4,7 @@
 # I Use proxychains because without it downloading will be slow
 
 cd /home/bardia
+rm -rf ./source
 BUILDNEW=$(date +'%Y-%m-%d-%H-%M-%S')
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
@@ -14,5 +15,4 @@ while IFS= read -r line; do
      proxychains archlinuxir_dep.sh $line | tee -a /home/bardia/logs/build/build-$BUILDNEW
 done < /home/bardia/pkg2
 
-sleep 1s
 rm /home/bardia/source -rf && cd /home/bardia
