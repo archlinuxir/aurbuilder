@@ -16,6 +16,7 @@ echo "Installing all the missing dependencies."
 # Save a packages dependency to a file and install them using yay(pacman).
 
 makepkg --printsrcinfo > SINFO
+
 while read -r -u 9 key value;
 do
   if [ "$key" == "depends" ];
