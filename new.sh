@@ -12,7 +12,9 @@ sudo pacman -Syu --noconfirm >> /dev/null
 # This loop reads the file that countains our packages in my case its 'pkg2'.
 
 while IFS= read -r line; do
+     rm -rf /home/bardia/source
      proxychains archlinuxir_dep.sh $line | tee -a /home/bardia/logs/build/build-$BUILDNEW
+     rm -rf /home/bardia/source
 done < /home/bardia/pkg2
 
 rm /home/bardia/source -rf && cd /home/bardia
