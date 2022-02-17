@@ -28,7 +28,6 @@ while IFS= read -r line; do
 
   if [[ $UNIXLAST6 -ge $START ]];
   then
-
     if [ "$line" == "tor-browser" ]
     then
 	rm -rf /home/bardia/source
