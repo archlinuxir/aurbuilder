@@ -34,8 +34,6 @@ do
   START=$(($START + 1))
 done
 
-sleep 2s
-
 # Copy built packages to webserver root and update the database.
 
 cp /build/*.pkg.tar.* /archlinuxir/x86_64
