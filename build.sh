@@ -58,7 +58,7 @@ proxychains archlinuxir_dep.sh tor-browser | tee -a /home/bardia/logs/build/buil
 cd /home/bardia/
 sed -i 's#https://dist.torproject.org/torbrowser/#https://tor.calyxinstitute.org/dist/torbrowser/#g' source/PKGBUILD
 proxychains archlinuxir_dep.sh tor-browser | tee -a /home/bardia/logs/build/build-$BUILDDATE
-
+rm -rf /home/bardia/source
 # Copy built packages to webserver root and update the database.
 
 cp /build/*.pkg.tar.* /archlinuxir/x86_64

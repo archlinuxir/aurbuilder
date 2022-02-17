@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Sleeps exist to prevent a set of bugs from happening.
-# I Use proxychains because without it downloading will be slow
+# I Use proxychains because without it downloading will be slow.
 
 cd /home/bardia
 rm -rf ./source
