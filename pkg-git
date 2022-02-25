@@ -1,6 +1,9 @@
 alacritty-git
 bicon-git
 foliate-git
+geany-git
+geany-plugins-git
+geany-themes-git
 gnome-shell-extension-appindicator-git
 gnome-shell-extension-blur-my-shell-git
 gnome-shell-extension-burn-my-windows-git
@@ -10,11 +13,12 @@ gnome-shell-extension-emoji-selector-git
 gnome-shell-extension-freon-git
 gnome-shell-extension-gsconnect-git
 gnome-shell-extension-hibernate-status-git
-gnome-shell-extension-openweather-git
+gnome-shell-extension-no-overview-git
 gnome-shell-extension-persian-calendar-git
 gnome-shell-extension-pixel-saver-git
 gnome-shell-extension-proxy-switcher-git
 gnome-shell-extension-system-monitor-git
+gogh-git
 i3status-rust-git
 jcal-git
 maven-bash-completion-git
@@ -67,6 +71,7 @@ setcolors-git
 siji-git
 simplescreenrecorder-wlroots-git
 spotify-adblock-git
+telegram-bot-api-git
 vim-airline-gruvbox-git
 vim-coc-clangd-git
 vim-coc-css-git
@@ -88,5 +93,6 @@ vim-gruvbox-git
 vim-polyglot-git
 vim-rainbow-parentheses-improved-git
 vim-rust-git
+vscode-codicons-git
 windows2usb-git
 yarn-completion-git
