@@ -2,7 +2,6 @@
 # I Use proxychains because without it downloading will be slow.
 
 cd /home/bardia/
-rm -rf /home/bardia/source
 START=$(date +%s)
 UPDATEDATE=$(date +'%Y-%m-%d-%H-%M-%S')
 echo "Updating the system."
@@ -20,7 +19,7 @@ while IFS= read -r line; do
   UNIXLAST=$(date -d "$LASTUPDATE" +"%s")
 
 # Add 14 hours to the last update time so if it does have any updates
-# Our 6 hour cronjob will grab it (BUG: gets updated twice).
+# Our 6 hour cronjob will grab it (BUG: gets updated twice ).
 
   UNIXLAST6=$(($UNIXLAST + 50400))
 
@@ -28,6 +27,7 @@ while IFS= read -r line; do
 
   if [[ $UNIXLAST6 -ge $START ]];
   then
+
     if [ "$line" == "tor-browser" ]
     then
 	rm -rf /home/bardia/source
