@@ -4,7 +4,7 @@
 # I Use proxychains because without it downloading will be slow.
 
 cd /home/bardia
-rm -rf ./source
+rm -rf /home/bardia/source
 BUILDNEW=$(date +'%Y-%m-%d-%H-%M-%S')
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
