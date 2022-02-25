@@ -14,6 +14,18 @@ github = "behdad/bicon"
 source = "github"
 github = "johnfactotum/foliate"
 
+[geany-git]
+source = "github"
+github = "geany/geany"
+
+[geany-plugins-git]
+source = "github"
+github = "geany/geany-plugins"
+
+[geany-themes-git]
+source = "github"
+github = "codebrainz/geany-themes"
+
 [gnome-shell-extension-appindicator-git]
 source = "github"
 github = "ubuntu/gnome-shell-extension-appindicator"
@@ -50,6 +62,10 @@ github = "GSConnect/gnome-shell-extension-gsconnect"
 source = "github"
 github = "arelange/gnome-shell-extension-hibernate-status"
 
+[gnome-shell-extension-no-overview-git]
+source = "github"
+github = "fthx/no-overview"
+
 [gnome-shell-extension-persian-calendar-git]
 source = "github"
 github = "omid/Persian-Calendar-for-Gnome-Shell"
@@ -65,6 +81,10 @@ github = "tomflannaghan/proxy-switcher"
 [gnome-shell-extension-system-monitor-git]
 source = "github"
 github = "paradoxxxzero/gnome-shell-system-monitor-applet"
+
+[gogh-git]
+source = "github"
+github = "Mayccoll/Gogh"
 
 [i3status-rust-git]
 source = "github"
@@ -274,6 +294,11 @@ github = "stark/siji"
 source = "github"
 github = "abba23/spotify-adblock"
 
+[telegram-bot-api-git]
+source = "github"
+github = "tdlib/telegram-bot-api"
+
+
 [vim-airline-gruvbox-git]
 source = "github"
 github = "sainnhe/gruvbox-material"
@@ -357,6 +382,10 @@ github = "luochen1990/rainbow"
 [vim-rust-git]
 source = "github"
 github = "rust-lang/rust.vim"
+
+[vscode-codicons-git]
+source = "github"
+github = "microsoft/vscode-codicons"
 
 [windows2usb-git]
 source = "github"
