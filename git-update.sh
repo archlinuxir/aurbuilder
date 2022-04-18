@@ -42,4 +42,4 @@ rm /archlinuxir/x86_64/archlinuxir*
 repo-add -R /archlinuxir/x86_64/archlinuxir.db.tar.zst /archlinuxir/x86_64/*.pkg.tar.zst > /dev/null 2>&1
 echo "Database updated completed."
 rm -rf /build/*
-find /home/bardia/logs/build/ -mindepth 1 -mtime +2 -delete
+find /home/bardia/logs/update/ -mindepth 1 -mtime +2 -delete
