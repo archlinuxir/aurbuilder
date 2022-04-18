@@ -14,6 +14,10 @@ github = "behdad/bicon"
 source = "github"
 github = "johnfactotum/foliate"
 
+[gdm-settings-git]
+source = "github"
+github = "realmazharhussain/gdm-settings"
+
 [geany-git]
 source = "github"
 github = "geany/geany"
@@ -274,9 +278,17 @@ github = "persepolisdm/persepolis"
 source = "github"
 github = "wsdfhjxc/virtual-desktop-bar"
 
-[polybar]
+[polybar-git]
 source = "github"
 github = "polybar/polybar"
+
+[pygobject-docs-git]
+source = "github"
+github = "lazka/pgi-docs-devhelp"
+
+[pygobject-tutorial-git]
+source = "github"
+github = "sebp/PyGObject-Tutorial"
 
 [setcolors-git]
 source = "github"
@@ -297,7 +309,6 @@ github = "abba23/spotify-adblock"
 [telegram-bot-api-git]
 source = "github"
 github = "tdlib/telegram-bot-api"
-
 
 [vim-airline-gruvbox-git]
 source = "github"
