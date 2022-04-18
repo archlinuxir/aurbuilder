@@ -1,6 +1,7 @@
 alacritty-git
 bicon-git
 foliate-git
+gdm-settings-git
 geany-git
 geany-plugins-git
 geany-themes-git
@@ -67,6 +68,8 @@ papirus-icon-theme-git
 persepolis-git
 plasma5-applets-virtual-desktop-bar-git
 polybar-git
+pygobject-docs-git
+pygobject-tutorial-git
 setcolors-git
 siji-git
 simplescreenrecorder-wlroots-git
