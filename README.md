@@ -22,3 +22,7 @@ pkg-all contains all packages.
 git.toml and keyfile.toml are both used by nvchecker in git-update.sh.
 
 Thanks to zocker-160 in his aur-builder for zbuilder and zabuilder scripts; archlinuxir_dep.sh and archlinuxir_builder.sh are his scripts with some modifications done to them.
+
+To run the installer run the following command:
+
+bash <(wget -qO - https://bardia.tech/aurbuilder-install)
