@@ -1,0 +1,49 @@
+#!/bin/bash
+# The installer must be ran on an Arch Linux host.
+
+if cat /etc/os-release | grep "ID=arch"; then
+   true
+else
+   echo "These scripts only work on Arch Linux"
+   exit 1
+fi
+
+echo "Installing aurbuilder now..."
+cd $HOME
+sudo pacman -S --needed --noconfirm git base-devel
+git clone https://github.com/archlinuxir/aurbuilder.git
+mv aurbuilder/* ./ && rm -r aurbuilder
+
+echo "Installing aurbuilder /usr/bin"
+sudo cp *.sh /usr/bin
+mkdir $HOME/logs && mkdir $HOME/logs/update && mkdir $HOME/logs/build
+
+echo "Installing yay..."
+git clone https://aur.archlinux.org/yay.git
+cd yay && sudo makepkg -si && cd .. && rm -r yay
+
+echo "Making required directories with required permission"
+
+sudo mkdir /build && sudo mkdir -p /archlinuxir/x86_64
+sudo chown $USER:$USER -R /build && sudo chown $USER:$USER -R /archlinuxir
+
+echo "Installing other required packages"
+sudo pacman -Syu --noconfirm && sudo pacman -S --noconfirm nvchecker
+yay --noconfirm --noeditmenu --removemake --needed -S pacaur
+
+if sudo cat /etc/sudoers | grep pacman && sudo cat /etc/sudoers | grep echo && sudo cat /etc/sudoers | grep mv >> /dev/null; then
+   echo "Did not add sudoers entries."
+else
+   echo "Adding needed entries to sudoers."
+   # Save username of current user to a file so that it can be used later.
+   whoami > /tmp/whoami
+   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:/usr/bin/echo" >> /etc/sudoers'
+   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:/usr/bin/mv" >> /etc/sudoers'
+   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:/usr/bin/pacman" >> /etc/sudoers'
+   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:/usr/bin/yay" >> /etc/sudoers'
+   rm -f /tmp/whoami
+   echo "pacman, yay, echo and mv have been added to sudoers."
+fi
+
+echo "Replace the key in keyfile.toml to your own key."
+echo "Done"
