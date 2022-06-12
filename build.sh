@@ -3,10 +3,12 @@
 # Sleeps exist to prevent a set of bugs from happening.
 # I Use proxychains because without it downloading will be slow.
 # If you want to run these set of scripts with an unprivileged user then:
-# pacman, echo, and mv must be added to sudoers file.
+# pacman, yay, echo and mv must be added to sudoers file.
 # Also move all the scripts to /usr/bin or /usr/local/bin or any place which is in PATH.
 # You can remove proxychains in these scripts if you don't need them.
 # You must create /build and /archlinuxir directories and give your user permission to write to them.
+# Also create a logs directory in your home directory: logs, logs/build, logs/update.
+# If you have installed it via the installer then it probably has done everything for you.
 
 # Add our own repository to let package checks work.
 if cat /etc/pacman.conf | grep archlinuxir; then
