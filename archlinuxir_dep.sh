@@ -2,15 +2,15 @@
 
 if test -z "$1";
 then
-  echo "Specify a software to build"
+  echo "Specify a package to build"
   exit 1
 fi
 
 # AUR Packages are served like this so I use git clone to grab it.
 
-git clone https://aur.archlinux.org/$1.git ~/source
+git clone https://aur.archlinux.org/$1.git $HOME/source
 
-cd ~/source
+cd $HOME/source
 echo "Installing all the missing dependencies."
 
 # Save a packages dependency to a file and install them using yay(pacman).
