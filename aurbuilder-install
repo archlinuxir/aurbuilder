@@ -37,10 +37,14 @@ else
    echo "Adding needed entries to sudoers."
    # Save username of current user to a file so that it can be used later.
    whoami > /tmp/whoami
-   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:/usr/bin/echo" >> /etc/sudoers'
-   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:/usr/bin/mv" >> /etc/sudoers'
-   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:/usr/bin/pacman" >> /etc/sudoers'
-   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:/usr/bin/yay" >> /etc/sudoers'
+   ECHO=$(which echo)
+   MV=$(which mv)
+   PACMAN=$(which pacman)
+   YAY=$(which yay)
+   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:'$ECHO'" >> /etc/sudoers'
+   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:'$MV'" >> /etc/sudoers'
+   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:'$PACMAN'" >> /etc/sudoers'
+   sudo su -c 'export WHOAMI=$(cat /tmp/whoami) && echo "$WHOAMI ALL=(ALL) NOPASSWD:'$YAY'" >> /etc/sudoers'
    rm -f /tmp/whoami
    echo "pacman, yay, echo and mv have been added to sudoers."
 fi
