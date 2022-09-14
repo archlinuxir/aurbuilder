@@ -1,3 +1,4 @@
+adw-gtk3-git
 alacritty-git
 bicon-git
 foliate-git
@@ -10,6 +11,7 @@ gnome-shell-extension-blur-my-shell-git
 gnome-shell-extension-burn-my-windows-git
 gnome-shell-extension-dash-to-dock-git
 gnome-shell-extension-dash-to-panel-git
+gnome-shell-extension-dock-from-dash-git
 gnome-shell-extension-emoji-selector-git
 gnome-shell-extension-freon-git
 gnome-shell-extension-gsconnect-git
@@ -18,16 +20,20 @@ gnome-shell-extension-no-overview-git
 gnome-shell-extension-persian-calendar-git
 gnome-shell-extension-pixel-saver-git
 gnome-shell-extension-proxy-switcher-git
+gnome-shell-extension-radio-git
 gnome-shell-extension-system-monitor-git
 gogh-git
+gradience-git
 i3status-rust-git
 jcal-git
 maven-bash-completion-git
 mkinitcpio-colors-git
+nano-syntax-highlighting-git
 neovim-cmp-buffer-git
 neovim-cmp-calc-git
 neovim-cmp-emoji-git
 neovim-cmp-git
+neovim-cmp_luasnip-git
 neovim-cmp-npm-git
 neovim-cmp-nvim-lsp-git
 neovim-cmp-nvim-lua-git
@@ -35,7 +41,6 @@ neovim-cmp-omni-git
 neovim-cmp-path-git
 neovim-cmp-rg-git
 neovim-cmp-treesitter-git
-neovim-cmp_luasnip-git
 neovim-coc-clangd-git
 neovim-coc-css-git
 neovim-coc-deno-git
@@ -55,6 +60,7 @@ neovim-coc-yaml-git
 neovim-edge-git
 neovim-everforest-git
 neovim-gruvbox-material-git
+neovim-jdtls-git
 neovim-lspconfig-git
 neovim-luasnip-git
 neovim-nordic-git
@@ -63,7 +69,10 @@ neovim-polyglot-git
 neovim-sonokai-git
 networkmanager-wireguard-git
 numix-circle-icon-theme-git
+numix-gtk-theme-git 
 numix-icon-theme-git
+numix-square-icon-theme-git
+papirus-folders-git
 papirus-icon-theme-git
 persepolis-git
 plasma5-applets-virtual-desktop-bar-git
@@ -99,3 +108,4 @@ vim-rust-git
 vscode-codicons-git
 windows2usb-git
 yarn-completion-git
+zuki-themes-git 

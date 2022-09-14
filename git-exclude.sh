@@ -13,6 +13,7 @@
 sudo pacman -Syu --noconfirm
 sleep 1s
 cd $HOME
+
 rm $HOME/source -rf
 proxychains archlinuxir_dep.sh gnome-shell-extension-arc-menu-git
 rm $HOME/source -rf
@@ -30,7 +31,11 @@ proxychains archlinuxir_dep.sh gnome-console-git
 rm $HOME/source -rf
 proxychains archlinuxir_dep.sh gnome-shell-extension-just-perfection-desktop-git
 rm $HOME/source -rf
+proxychains archlinuxir_dep.sh gnome-shell-extension-shell-configurator-git
+rm $HOME/source -rf
 proxychains archlinuxir_dep.sh amberol-git
+rm $HOME/source -rf
+proxychains archlinuxir_dep.sh libadwaita-git
 rm $HOME/source -rf
 
 cp /build/*.pkg.tar.* /archlinuxir/x86_64

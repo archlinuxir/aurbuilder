@@ -2,6 +2,10 @@
 oldver = "old_ver.json"
 newver = "dates.json"
 
+[adw-gtk3-git]
+source = "github"
+github = "lassekongo83/adw-gtk3"
+
 [alacritty-git]
 source = "github"
 github = "alacritty/alacritty"
@@ -50,6 +54,10 @@ github = "micheleg/dash-to-dock"
 source = "github"
 github = "home-sweet-gnome/dash-to-panel"
 
+[gnome-shell-extension-dock-from-dash-git]
+source = "github"
+github = "fthx/dock-from-dash"
+
 [gnome-shell-extension-emoji-selector-git]
 source = "github"
 github = "maoschanz/emoji-selector-for-gnome"
@@ -82,6 +90,10 @@ github = "pixel-saver/pixel-saver"
 source = "github"
 github = "tomflannaghan/proxy-switcher"
 
+[gnome-shell-extension-radio-git]
+source = "github"
+github = "hslbck/gnome-shell-extension-radio"
+
 [gnome-shell-extension-system-monitor-git]
 source = "github"
 github = "paradoxxxzero/gnome-shell-system-monitor-applet"
@@ -89,6 +101,10 @@ github = "paradoxxxzero/gnome-shell-system-monitor-applet"
 [gogh-git]
 source = "github"
 github = "Mayccoll/Gogh"
+
+[gradience-git]
+source = "github"
+github = "GradienceTeam/Gradience"
 
 [i3status-rust-git]
 source = "github"
@@ -105,6 +121,10 @@ github = "juven/maven-bash-completion"
 [mkinitcpio-colors-git]
 source = "github"
 github = "EvanPurkhiser/mkinitcpio-colors"
+
+[nano-syntax-highlighting-git]
+source = "github"
+github = "scopatz/nanorc"
 
 [neovim-cmp-buffer-git]
 source = "github"
@@ -230,6 +250,10 @@ github = "sainnhe/everforest"
 source = "github"
 github = "sainnhe/gruvbox-material"
 
+[neovim-jdtls-git]
+source = "github"
+github = "mfussenegger/nvim-jdtls"
+
 [neovim-lspconfig-git]
 source = "github"
 github = "neovim/nvim-lspconfig"
@@ -262,9 +286,21 @@ github = "max-moser/network-manager-wireguard"
 source = "github"
 github = "numixproject/numix-icon-theme-circle"
 
+[numix-gtk-theme-git]
+source = "github"
+github = "numixproject/numix-gtk-theme"
+
 [numix-icon-theme-git]
 source = "github"
 github = "numixproject/numix-icon-theme"
+
+[numix-square-icon-theme-git]
+source = "github"
+github = "numixproject/numix-icon-theme-square"
+
+[papirus-folders-git]
+source = "github"
+github = "PapirusDevelopmentTeam/papirus-folders"
 
 [papirus-icon-theme-git]
 source = "github"
@@ -405,3 +441,7 @@ github = "ValdikSS/windows2usb"
 [yarn-completion-git]
 source = "github"
 github = "dsifford/yarn-completion"
+
+[zuki-themes-git]
+source = "github"
+github = "lassekongo83/zuki-themes"
