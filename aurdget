@@ -27,6 +27,6 @@ do
   fi
 done 9< "SINFO"
 
-# Call archlinuxir_builder to build the package.
+# Call aurbuilder to build the package.
 
-archlinuxir_builder.sh "$1"
+aurbuilder "$1"

@@ -20,7 +20,7 @@ sudo pacman -Syu --noconfirm >> /dev/null
 
 while IFS= read -r line; do
      rm -rf $HOME/source
-     proxychains archlinuxir_dep.sh $line | tee -a $HOME/logs/build/build-$BUILDNEW
+     proxychains aurdget $line | tee -a $HOME/logs/build/build-$BUILDNEW
      rm -rf $HOME/source
 done < $HOME/pkg2
 

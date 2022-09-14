@@ -15,27 +15,27 @@ sleep 1s
 cd $HOME
 
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh gnome-shell-extension-arc-menu-git
+proxychains aurdget gnome-shell-extension-arc-menu-git
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh plymouth-git
+proxychains aurdget plymouth-git
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh vala-panel-appmenu-xfce-git
+proxychains aurdget vala-panel-appmenu-xfce-git
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh gnome-shell-extension-openweather-git
+proxychains aurdget gnome-shell-extension-openweather-git
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh blueprint-compiler-git
+proxychains aurdget blueprint-compiler-git
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh gnome-text-editor-git
+proxychains aurdget gnome-text-editor-git
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh gnome-console-git
+proxychains aurdget gnome-console-git
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh gnome-shell-extension-just-perfection-desktop-git
+proxychains aurdget gnome-shell-extension-just-perfection-desktop-git
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh gnome-shell-extension-shell-configurator-git
+proxychains aurdget gnome-shell-extension-shell-configurator-git
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh amberol-git
+proxychains aurdget amberol-git
 rm $HOME/source -rf
-proxychains archlinuxir_dep.sh libadwaita-git
+proxychains aurdget libadwaita-git
 rm $HOME/source -rf
 
 cp /build/*.pkg.tar.* /archlinuxir/x86_64

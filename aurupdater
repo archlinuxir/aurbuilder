@@ -38,12 +38,12 @@ while IFS= read -r line; do
     if [ "$line" == "tor-browser" ]
     then
 	rm -rf $HOMEsource
-        proxychains archlinuxir_dep.sh tor-browser
+        proxychains aurdget tor-browser
         cd $HOME
         sed -i 's#https://dist.torproject.org/torbrowser/#https://tor.calyxinstitute.org/dist/torbrowser/#g' $HOME/source/PKGBUILD
-        proxychains archlinuxir_dep.sh tor-browser
+        proxychains aurdget tor-browser
     else
-        proxychains archlinuxir_dep.sh $line
+        proxychains aurdget $line
         rm -rf $HOME/source && cd /archlinuxir/x86_64
     fi
       echo $line >> $HOME/logs/update/Updated-$UPDATEDATE

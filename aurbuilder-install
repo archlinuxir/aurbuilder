@@ -8,15 +8,16 @@ else
    exit 1
 fi
 
-echo "Installing aurbuilder now..."
+echo "Cloning into aurbuilder..."
 cd $HOME
 sudo pacman -S --needed --noconfirm git base-devel
 git clone https://github.com/archlinuxir/aurbuilder.git
 mv aurbuilder/* ./ && rm -r aurbuilder
 
-echo "Installing aurbuilder /usr/bin"
-sudo cp *.sh /usr/bin
+echo "Installing aurbuilder to /usr/bin"
+sudo mv aurbuilder aurdget aurfbuild aurtester aureupdate aurgupdater aurupdater /usr/bin
 mkdir $HOME/logs && mkdir $HOME/logs/update && mkdir $HOME/logs/build
+rm README.md aurbuilder-install -f
 
 echo "Installing yay..."
 git clone https://aur.archlinux.org/yay.git

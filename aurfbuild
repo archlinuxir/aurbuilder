@@ -28,7 +28,7 @@ sudo pacman -Syu --noconfirm >> /dev/null
 # This loop reads the file that countains our packages in my case its 'pkg'.
 
 while IFS= read -r line; do
-     proxychains archlinuxir_dep.sh $line | tee -a $HOME/logs/build/build-$BUILDDATE
+     proxychains aurdget $line | tee -a $HOME/logs/build/build-$BUILDDATE
 done < $HOME/pkg-all
 
 rm $HOME/source -rf && cd $HOME
@@ -44,7 +44,7 @@ sleep 2s
 # The loop will be run a second time to build left out packages.
 
 while IFS= read -r line; do
-     proxychains archlinuxir_dep.sh $line | tee -a $HOME/logs/build/build-$BUILDDATE
+     proxychains aurdget $line | tee -a $HOME/logs/build/build-$BUILDDATE
 done < $HOME/logs/build/list/missing-$BUILDDATE
 
 rm $HOME/source -rf && cd $HOME
@@ -62,7 +62,7 @@ sleep 2s
 # The loop will be run a third time to build left out packages.
 
 while IFS= read -r line; do
-     proxychains archlinuxir_dep.sh $line | tee -a $HOME/logs/build/build-$BUILDDATE
+     proxychains aurdget $line | tee -a $HOME/logs/build/build-$BUILDDATE
 done < $HOME/logs/build/missing2-$BUILDDATE
 
 rm $HOME/source -rf && cd $HOME
@@ -80,7 +80,7 @@ sleep 2s
 # The loop will be run a forth time to build left out packages.
 
 while IFS= read -r line; do
-     proxychains archlinuxir_dep.sh $line | tee -a $HOME/logs/build/build-$BUILDDATE
+     proxychains aurdget $line | tee -a $HOME/logs/build/build-$BUILDDATE
 done < $HOME/logs/build/missing3-$BUILDDATE
 
 rm $HOME/source -rf && cd $HOME
@@ -91,10 +91,10 @@ sleep 2s
 # This pulls the PKGBUILD file and replaces a few
 # values and runs the build script again.
 
-proxychains archlinuxir_dep.sh tor-browser | tee -a $HOME/logs/build/build-$BUILDDATE
+proxychains aurdget tor-browser | tee -a $HOME/logs/build/build-$BUILDDATE
 cd $HOME
 sed -i 's#https://dist.torproject.org/torbrowser/#https://tor.calyxinstitute.org/dist/torbrowser/#g' $HOME/source/PKGBUILD
-proxychains archlinuxir_dep.sh tor-browser | tee -a $HOME/logs/build/build-$BUILDDATE
+proxychains aurdget tor-browser | tee -a $HOME/logs/build/build-$BUILDDATE
 
 # Copy built packages to webserver root and update the database.
 
