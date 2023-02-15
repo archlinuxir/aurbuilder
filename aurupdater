@@ -4,11 +4,12 @@
 # pacman, yay, echo and mv must be added to sudoers file.
 # Also move all the scripts to /usr/bin or /usr/local/bin or any place which is in PATH.
 # You can remove proxychains in these scripts if you don't need them.
-# ARCH_DIR, LOGS_DIR, SOURCE_DIR and BUILD_DIR can be adjusted to your liking.
+# REPO_NAME, ARCH_DIR, LOGS_DIR, SOURCE_DIR and BUILD_DIR can be adjusted to your liking.
 # If you have installed it via the installer then it probably has done everything for you.
 
 PKG_FILE="$HOME/pkg"
-ARCH_DIR="/archlinuxir/x86_64"
+REPO_NAME="archlinuxir"
+ARCH_DIR="/$REPO_NAME/x86_64"
 LOGS_DIR="$HOME/logs/update"
 BUILD_DIR="/build"
 SOURCE_DIR="$HOME/source"
@@ -64,8 +65,8 @@ sleep 2s
 
 cp $BUILD_DIR/*.pkg.tar.* $ARCH_DIR
 echo "Updating the Database."
-rm $ARCH_DIR/archlinuxir*
-repo-add -R $ARCH_DIR/archlinuxir.db.tar.zst $AIR_DIR/*.pkg.tar.zst > /dev/null 2>&1
+rm $ARCH_DIR/$REPO_NAME*
+repo-add -R $ARCH_DIR/$REPO_NAME.db.tar.zst $AIR_DIR/*.pkg.tar.zst > /dev/null 2>&1
 echo "Database updated completed."
 rm -rf $BUILD_DIR/*
 find $LOGS_DIR -mindepth 1 -mtime +2 -delete

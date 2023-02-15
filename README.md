@@ -1,4 +1,4 @@
-# Archlinuxir
+# aurbuilder
 Hey This is Bardia and these are a set of scripts that I use in my archlinuxir repository project.
 What do these scripts do exactly? Let me explain:
 

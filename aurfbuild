@@ -6,21 +6,22 @@
 # pacman, yay, echo and mv must be added to sudoers file.
 # Also move all the scripts to /usr/bin or /usr/local/bin or any place which is in PATH.
 # You can remove proxychains in these scripts if you don't need them.
-# ARCH_DIR, LOGS_DIR, SOURCE_DIR and BUILD_DIR can be adjusted to your liking.
+# REPO_NAME, ARCH_DIR, LOGS_DIR, SOURCE_DIR and BUILD_DIR can be adjusted to your liking.
 # If you have installed it via the installer then it probably has done everything for you.
 
 SOURCE_DIR="$HOME/source"
 LOGS_DIR="$HOME/logs/build"
 PKG_ALL="$HOME/pkg-all"
-ARCH_DIR="/archlinuxir/x86_64"
+REPO_NAME="archlinuxir"
+ARCH_DIR="/$REPO_NAME/x86_64"
 BUILD_DIR="/build"
 PKGBUILD=="$HOME/source/PKGBUILD"
 
 # Add our own repository to let package checks work.
-if cat /etc/pacman.conf | grep archlinuxir; then
+if cat /etc/pacman.conf | grep $REPO_NAME; then
    true
 else
-   sudo echo "[archlinuxir]
+   sudo echo "[$REPO_NAME]
 SigLevel = Optional
 Server = https://mirror.bardia.tech/$repo/$arch" >> /etc/pacman.conf
 fi
@@ -43,7 +44,7 @@ rm $SOURCE_DIR -rf && cd $HOME
 
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
-pacman -Sql archlinuxir > $LOGS_DIR/available-$BUILDDATE
+pacman -Sql $REPO_NAME > $LOGS_DIR/available-$BUILDDATE
 diff --suppress-common-lines -y $PKG_ALL $LOGS_DIR/available-$BUILDDATE  | awk '{ print $1 }' | sort | grep -v '>' > $LOGS_DIR/missing-$BUILDDATE
 sleep 2s
 
@@ -61,7 +62,7 @@ sleep 2s
 
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
-pacman -Sql archlinuxir > $LOGS_DIR/available2-$BUILDDATE
+pacman -Sql $REPO_NAME > $LOGS_DIR/available2-$BUILDDATE
 diff --suppress-common-lines -y pkg-all $LOGS_DIR/available2-$BUILDDATE  | awk '{ print $1 }' | sort | grep -v '>' >> > $LOGS_DIR/missing2-$BUILDDATE
 sleep 2s
 
@@ -79,7 +80,7 @@ sleep 2s
 
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
-pacman -Sql archlinuxir > $LOGS_DIR/available3-$BUILDDATE
+pacman -Sql $REPO_NAME > $LOGS_DIR/available3-$BUILDDATE
 diff --suppress-common-lines -y pkg-all $LOGS_DIR/available3-$BUILDDATE  | awk '{ print $1 }' | sort | grep -v '>' >> > $LOGS_DIR/missing3-$BUILDDATE
 sleep 2s
 
@@ -106,15 +107,15 @@ proxychains aurdget tor-browser | tee -a $LOGS_DIR/build-$BUILDDATE
 
 cp $BUILD_DIR/*.pkg.tar.* $ARCH_DIR
 echo "Updating the Database."
-rm $ARCH_DIR/archlinuxir*
-repo-add -R $ARCH_DIR/archlinuxir.db.tar.zst $ARCH_DIR/*.pkg.tar.zst > /dev/null 2>&1
+rm $ARCH_DIR/$REPO_NAME*
+repo-add -R $ARCH_DIR/$REPO_NAME.db.tar.zst $ARCH_DIR/*.pkg.tar.zst > /dev/null 2>&1
 echo "Database updated completed."
 rm -rf $BUILD_DIR/*
 
 # Remove our own repository from the list of repositories.
 # This speeds things up a bit on updates.
 
-if cat /etc/pacman.conf | grep archlinuxir; then
+if cat /etc/pacman.conf | grep $REPO_NAME; then
    sudo head -n -3 /etc/pacman.conf > /etc/pacman.conf.new
    sudo mv /etc/pacman.conf.new /etc/pacman.conf
 else
