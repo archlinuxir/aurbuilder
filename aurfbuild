@@ -6,9 +6,15 @@
 # pacman, yay, echo and mv must be added to sudoers file.
 # Also move all the scripts to /usr/bin or /usr/local/bin or any place which is in PATH.
 # You can remove proxychains in these scripts if you don't need them.
-# You must create /build and /archlinuxir directories and give your user permission to write to them.
-# Also create a logs directory in your home directory: logs, logs/build, logs/update.
+# ARCH_DIR, LOGS_DIR, SOURCE_DIR and BUILD_DIR can be adjusted to your liking.
 # If you have installed it via the installer then it probably has done everything for you.
+
+SOURCE_DIR="$HOME/source"
+LOGS_DIR="$HOME/logs/build"
+PKG_ALL="$HOME/pkg-all"
+ARCH_DIR="/archlinuxir/x86_64"
+BUILD_DIR="/build"
+PKGBUILD=="$HOME/source/PKGBUILD"
 
 # Add our own repository to let package checks work.
 if cat /etc/pacman.conf | grep archlinuxir; then
@@ -16,11 +22,11 @@ if cat /etc/pacman.conf | grep archlinuxir; then
 else
    sudo echo "[archlinuxir]
 SigLevel = Optional
-Server = https://Mirror.bardia.tech/$repo/$arch" >> /etc/pacman.conf
+Server = https://mirror.bardia.tech/$repo/$arch" >> /etc/pacman.conf
 fi
 
 cd $HOME
-rm -rf $HOME/source
+rm -rf $SOURCE_DIR
 BUILDDATE=$(date +'%Y-%m-%d-%H-%M-%S')
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
@@ -28,26 +34,26 @@ sudo pacman -Syu --noconfirm >> /dev/null
 # This loop reads the file that countains our packages in my case its 'pkg'.
 
 while IFS= read -r line; do
-     proxychains aurdget $line | tee -a $HOME/logs/build/build-$BUILDDATE
-done < $HOME/pkg-all
+     proxychains aurdget $line | tee -a $LOGS_DIR/build-$BUILDDATE
+done < $PKG_ALL
 
-rm $HOME/source -rf && cd $HOME
+rm $SOURCE_DIR -rf && cd $HOME
 
 # Compare first runs built packages to the ones that should have been built.
 
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
-pacman -Sql archlinuxir > $HOME/logs/build/available-$BUILDDATE
-diff --suppress-common-lines -y $HOME/pkg-all $HOME/logs/build/available-$BUILDDATE  | awk '{ print $1 }' | sort | grep -v '>' > $HOME/logs/build/missing-$BUILDDATE
+pacman -Sql archlinuxir > $LOGS_DIR/available-$BUILDDATE
+diff --suppress-common-lines -y $PKG_ALL $LOGS_DIR/available-$BUILDDATE  | awk '{ print $1 }' | sort | grep -v '>' > $LOGS_DIR/missing-$BUILDDATE
 sleep 2s
 
 # The loop will be run a second time to build left out packages.
 
 while IFS= read -r line; do
-     proxychains aurdget $line | tee -a $HOME/logs/build/build-$BUILDDATE
-done < $HOME/logs/build/list/missing-$BUILDDATE
+     proxychains aurdget $line | tee -a $LOGS_DIR/build-$BUILDDATE
+done < $LOGS_DIR/missing-$BUILDDATE
 
-rm $HOME/source -rf && cd $HOME
+rm $SOURCE_DIR -rf && cd $HOME
 
 sleep 2s
 
@@ -55,17 +61,17 @@ sleep 2s
 
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
-pacman -Sql archlinuxir > $HOME/logs/build/available2-$BUILDDATE
-diff --suppress-common-lines -y pkg-all $HOME/logs/build/available2-$BUILDDATE  | awk '{ print $1 }' | sort | grep -v '>' >> > $HOME/logs/build/missing2-$BUILDDATE
+pacman -Sql archlinuxir > $LOGS_DIR/available2-$BUILDDATE
+diff --suppress-common-lines -y pkg-all $LOGS_DIR/available2-$BUILDDATE  | awk '{ print $1 }' | sort | grep -v '>' >> > $LOGS_DIR/missing2-$BUILDDATE
 sleep 2s
 
 # The loop will be run a third time to build left out packages.
 
 while IFS= read -r line; do
-     proxychains aurdget $line | tee -a $HOME/logs/build/build-$BUILDDATE
-done < $HOME/logs/build/missing2-$BUILDDATE
+     proxychains aurdget $line | tee -a $LOGS_DIR/build-$BUILDDATE
+done < $LOGS_DIR/missing2-$BUILDDATE
 
-rm $HOME/source -rf && cd $HOME
+rm $SOURCE_DIR -rf && cd $HOME
 
 sleep 2s
 
@@ -73,17 +79,17 @@ sleep 2s
 
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
-pacman -Sql archlinuxir > $HOME/logs/build/available3-$BUILDDATE
-diff --suppress-common-lines -y pkg-all $HOME/logs/build/available3-$BUILDDATE  | awk '{ print $1 }' | sort | grep -v '>' >> > $HOME/logs/build/missing3-$BUILDDATE
+pacman -Sql archlinuxir > $LOGS_DIR/available3-$BUILDDATE
+diff --suppress-common-lines -y pkg-all $LOGS_DIR/available3-$BUILDDATE  | awk '{ print $1 }' | sort | grep -v '>' >> > $LOGS_DIR/missing3-$BUILDDATE
 sleep 2s
 
 # The loop will be run a forth time to build left out packages.
 
 while IFS= read -r line; do
-     proxychains aurdget $line | tee -a $HOME/logs/build/build-$BUILDDATE
-done < $HOME/logs/build/missing3-$BUILDDATE
+     proxychains aurdget $line | tee -a $LOGS_DIR/build-$BUILDDATE
+done < $LOGS_DIR/missing3-$BUILDDATE
 
-rm $HOME/source -rf && cd $HOME
+rm $SOURCE_DIR -rf && cd $HOME
 
 sleep 2s
 
@@ -91,19 +97,19 @@ sleep 2s
 # This pulls the PKGBUILD file and replaces a few
 # values and runs the build script again.
 
-proxychains aurdget tor-browser | tee -a $HOME/logs/build/build-$BUILDDATE
+proxychains aurdget tor-browser | tee -a $LOGS_DIR/build-$BUILDDATE
 cd $HOME
-sed -i 's#https://dist.torproject.org/torbrowser/#https://tor.calyxinstitute.org/dist/torbrowser/#g' $HOME/source/PKGBUILD
-proxychains aurdget tor-browser | tee -a $HOME/logs/build/build-$BUILDDATE
+sed -i 's#https://dist.torproject.org/torbrowser/#https://tor.calyxinstitute.org/dist/torbrowser/#g' $PKGBUILD
+proxychains aurdget tor-browser | tee -a $LOGS_DIR/build-$BUILDDATE
 
 # Copy built packages to webserver root and update the database.
 
-cp /build/*.pkg.tar.* /archlinuxir/x86_64
+cp $BUILD_DIR/*.pkg.tar.* $ARCH_DIR
 echo "Updating the Database."
-rm /archlinuxir/x86_64/archlinuxir*
-repo-add -R /archlinuxir/x86_64/archlinuxir.db.tar.zst /archlinuxir/x86_64/*.pkg.tar.zst > /dev/null 2>&1
+rm $ARCH_DIR/archlinuxir*
+repo-add -R $ARCH_DIR/archlinuxir.db.tar.zst $ARCH_DIR/*.pkg.tar.zst > /dev/null 2>&1
 echo "Database updated completed."
-rm -rf /build/*
+rm -rf $BUILD_DIR/*
 
 # Remove our own repository from the list of repositories.
 # This speeds things up a bit on updates.
@@ -115,4 +121,4 @@ else
    true
 fi
 
-find $HOME/logs/build/ -mindepth 1 -mtime +2 -delete
+find $LOGS_DIR -mindepth 1 -mtime +2 -delete

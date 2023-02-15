@@ -6,12 +6,14 @@
 # pacman, yay, echo and mv must be added to sudoers file.
 # Also move all the scripts to /usr/bin or /usr/local/bin or any place which is in PATH.
 # You can remove proxychains in these scripts if you don't need them.
-# You must create /build and /archlinuxir directories and give your user permission to write to them.
-# Also create a logs directory in your home directory: logs, logs/build, logs/update.
+# LOGS_DIR and SOURCE_DIR can be adjusted to your liking.
 # If you have installed it via the installer then it probably has done everything for you.
 
+SOURCE_DIR="$HOME/source"
+LOGS_DIR="$HOME/logs/build/"
+
 cd $HOME
-rm -rf $HOME/source
+rm -rf $SOURCE_DIR
 BUILDNEW=$(date +'%Y-%m-%d-%H-%M-%S')
 echo "Updating the system."
 sudo pacman -Syu --noconfirm >> /dev/null
@@ -19,9 +21,9 @@ sudo pacman -Syu --noconfirm >> /dev/null
 # This loop reads the file that countains our packages in my case its 'pkg2'.
 
 while IFS= read -r line; do
-     rm -rf $HOME/source
-     proxychains aurdget $line | tee -a $HOME/logs/build/build-$BUILDNEW
-     rm -rf $HOME/source
+     rm -rf $SOURCE_DIR
+     proxychains aurdget $line | tee -a $LOGS_DIR/build-$BUILDNEW
+     rm -rf $SOURCE_DIR
 done < $HOME/pkg2
 
-rm $HOME/source -rf && cd $HOME
+rm $SOURCE_DIR -rf && cd $HOME

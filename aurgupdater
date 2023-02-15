@@ -6,10 +6,18 @@
 # pacman, yay, echo and mv must be added to sudoers file.
 # Also move all the scripts to /usr/bin or /usr/local/bin or any place which is in PATH.
 # You can remove proxychains in these scripts if you don't need them.
-# You must create /build and /archlinuxir directories and give your user permission to write to them.
-# Also create a logs directory in your home directory: logs, logs/build, logs/update.
+# ARCH_DIR, LOGS_DIR, SOURCE_DIR and BUILD_DIR can be adjusted to your liking.
 # If you have installed it via the installer then it probably has done everything for you.
 
+GIT_FILE="$HOME/git.toml"
+KEY_FILE="$HOME/keyfile.toml"
+DATES_FILE="$HOME/dates.json"
+PKG_GIT="$HOME/pkg-git"
+FORMATTED_DATE="$HOME/date"
+SOURCE_DIR="$HOME/source"
+LOGS_DIR="$HOME/logs/update"
+BUILD_DIR="/build"
+ARCH_DIR="/archlinuxir/x86_64"
 UPDATEDATE=$(date +'%Y-%m-%d-%H-%M-%S')
 DATE=$(date +"%Y%m%d")
 echo "Updating the system."
@@ -18,23 +26,23 @@ sleep 1s
 
 # Check for updates using nvchecker.
 
-nvchecker -c $HOME/git.toml -k $HOME/keyfile.toml
-cut -f4 -d '"' $HOME/dates.json | rev | cut -c8- | rev > dates
+nvchecker -c $GIT_FILE -k $KEY_FILE
+cut -f4 -d '"' $DATES_FILE | rev | cut -c8- | rev > dates
 sed -i '/^$/d' dates
-END=$(cat $HOME/pkg-git | wc -l)
+END=$(cat $PKG_GIT | wc -l)
 START=1
 
 while [ $START -le $END ]
 do
-  GITDATE=$(head -$START $HOME/dates | tail +$START)
-  GITNAME=$(head -$START $HOME/pkg-git | tail +$START)
+  GITDATE=$(head -$START $DATE | tail +$START)
+  GITNAME=$(head -$START $PKG_GIT | tail +$START)
     if [[ $GITDATE -ge $DATE ]];
     then
-	rm -rf $HOME/source
+	rm -rf $SOURCE_DIR
         proxychains aurdget $GITNAME
-        rm -rf $HOME/source
+        rm -rf $SOURCE_DIR
         cd $HOME
-        echo $GITNAME >> $HOME/logs/update/Updated-git-$UPDATEDATE
+        echo $GITNAME >> $LOGS_DIR/Updated-git-$UPDATEDATE
     else
         echo "$GITNAME doesn't need to get updated."
     fi
@@ -43,10 +51,10 @@ done
 
 # Copy built packages to webserver root and update the database.
 
-cp /build/*.pkg.tar.* /archlinuxir/x86_64
+cp $BUILD_DIR/*.pkg.tar.* $ARCH_DIR
 echo "Updating the Database."
-rm /archlinuxir/x86_64/archlinuxir*
-repo-add -R /archlinuxir/x86_64/archlinuxir.db.tar.zst /archlinuxir/x86_64/*.pkg.tar.zst > /dev/null 2>&1
+rm $ARCH_DIR/archlinuxir*
+repo-add -R $ARCH_DIR/archlinuxir.db.tar.zst $ARCH_DIR/*.pkg.tar.zst > /dev/null 2>&1
 echo "Database updated completed."
-rm -rf /build/*
-find $HOME/logs/update/ -mindepth 1 -mtime +2 -delete
+rm -rf $BUILD_DIR/*
+find $LOGS_DIR -mindepth 1 -mtime +2 -delete

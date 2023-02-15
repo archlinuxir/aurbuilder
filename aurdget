@@ -6,11 +6,14 @@ then
   exit 1
 fi
 
+PKG_DIR="$HOME/source"
+
 # AUR Packages are served like this so I use git clone to grab it.
 
-git clone https://aur.archlinux.org/$1.git $HOME/source
+git clone https://aur.archlinux.org/$1.git $PKG_DIR
 
-cd $HOME/source
+cd $PKG_DIR
+
 echo "Installing all the missing dependencies."
 
 # Save a packages dependency to a file and install them using yay(pacman).

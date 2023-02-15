@@ -4,9 +4,15 @@
 # pacman, yay, echo and mv must be added to sudoers file.
 # Also move all the scripts to /usr/bin or /usr/local/bin or any place which is in PATH.
 # You can remove proxychains in these scripts if you don't need them.
-# You must create /build and /archlinuxir directories and give your user permission to write to them.
-# Also create a logs directory in your home directory: logs, logs/build, logs/update.
+# ARCH_DIR, LOGS_DIR, SOURCE_DIR and BUILD_DIR can be adjusted to your liking.
 # If you have installed it via the installer then it probably has done everything for you.
+
+PKG_FILE="$HOME/pkg"
+ARCH_DIR="/archlinuxir/x86_64"
+LOGS_DIR="$HOME/logs/update"
+BUILD_DIR="/build"
+SOURCE_DIR="$HOME/source"
+PKGBUILD="$HOME/source/PKGBUILD"
 
 cd $HOME
 START=$(date +%s)
@@ -37,29 +43,29 @@ while IFS= read -r line; do
 
     if [ "$line" == "tor-browser" ]
     then
-	rm -rf $HOMEsource
+	rm -rf $SOURCE_DIR
         proxychains aurdget tor-browser
         cd $HOME
-        sed -i 's#https://dist.torproject.org/torbrowser/#https://tor.calyxinstitute.org/dist/torbrowser/#g' $HOME/source/PKGBUILD
+        sed -i 's#https://dist.torproject.org/torbrowser/#https://tor.calyxinstitute.org/dist/torbrowser/#g' $PKGBUILD
         proxychains aurdget tor-browser
     else
         proxychains aurdget $line
-        rm -rf $HOME/source && cd /archlinuxir/x86_64
+        rm -rf $SOURCE_DIR && cd $ARCH_DIR
     fi
-      echo $line >> $HOME/logs/update/Updated-$UPDATEDATE
+      echo $line >> $LOGS_DIR/Updated-$UPDATEDATE
   else
       echo "$line doesn't need to get updated."
   fi
-done < $HOME/pkg
+done < $PKG_FILE
 
 sleep 2s
 
 # Copy built packages to webserver root and update the database.
 
-cp /build/*.pkg.tar.* /archlinuxir/x86_64
+cp $BUILD_DIR/*.pkg.tar.* $ARCH_DIR
 echo "Updating the Database."
-rm /archlinuxir/x86_64/archlinuxir*
-repo-add -R /archlinuxir/x86_64/archlinuxir.db.tar.zst /archlinuxir/x86_64/*.pkg.tar.zst > /dev/null 2>&1
+rm $ARCH_DIR/archlinuxir*
+repo-add -R $ARCH_DIR/archlinuxir.db.tar.zst $AIR_DIR/*.pkg.tar.zst > /dev/null 2>&1
 echo "Database updated completed."
-rm -rf /build/*
-find $HOME/logs/update/ -mindepth 1 -mtime +2 -delete
+rm -rf $BUILD_DIR/*
+find $LOGS_DIR -mindepth 1 -mtime +2 -delete

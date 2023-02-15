@@ -1,8 +1,10 @@
 #!/bin/bash
 
+BUILD_DIR="/build"
+
 makepkg -s -c -C --noconfirm --noprogressbar --skippgpcheck --nocolor
 
 # Copy the file to our web server directory and delete the build directory.
 
-cp ./*.pkg.tar.* /build
+cp ./*.pkg.tar.* $BUILD_DIR
 rm ./source -rf

@@ -6,42 +6,46 @@
 # pacman, yay, echo and mv must be added to sudoers file.
 # Also move all the scripts to /usr/bin or /usr/local/bin or any place which is in PATH.
 # You can remove proxychains in these scripts if you don't need them.
-# You must create /build and /archlinuxir directories and give your user permission to write to them.
-# Also create a logs directory in your home directory: logs, logs/build, logs/update.
+# ARCH_DIR, LOGS_DIR, SOURCE_DIR and BUILD_DIR can be adjusted to your liking.
 # If you have installed it via the installer then it probably has done everything for you.
+
+BUILD_DIR="/build"
+ARCH_DIR="/archlinuxir/x86_64"
+LOGS_DIR="$HOME/logs/update"
+SOURCE_DIR="$HOME/source"
 
 sudo pacman -Syu --noconfirm
 sleep 1s
 cd $HOME
 
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget gnome-shell-extension-arc-menu-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget plymouth-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget vala-panel-appmenu-xfce-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget gnome-shell-extension-openweather-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget blueprint-compiler-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget gnome-text-editor-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget gnome-console-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget gnome-shell-extension-just-perfection-desktop-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget gnome-shell-extension-shell-configurator-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget amberol-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 proxychains aurdget libadwaita-git
-rm $HOME/source -rf
+rm $SOURCE_DIR -rf
 
-cp /build/*.pkg.tar.* /archlinuxir/x86_64
+cp $BUILD_DIR/*.pkg.tar.* $ARCH_DIR
 echo "Updating the Database."
-rm /archlinuxir/x86_64/archlinuxir*
-repo-add -R /archlinuxir/x86_64/archlinuxir.db.tar.zst /archlinuxir/x86_64/*.pkg.tar.zst > /dev/null 2>&1
+rm $ARCH_DIR/archlinuxir*
+repo-add -R $ARCH_DIR/archlinuxir.db.tar.zst $ARCH_DIR/*.pkg.tar.zst > /dev/null 2>&1
 echo "Database updated completed."
-rm -rf /build/*
-find $HOME/logs/update/ -mindepth 1 -mtime +2 -delete
+rm -rf $BUILD_DIR/*
+find $LOGS_DIR -mindepth 1 -mtime +2 -delete
